@@ -9,10 +9,16 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v2') //se utiliza para setear un prefijo antes de cada uno de los modulos. Ej: api/pokemon
   app.useGlobalPipes(
     new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      // transform: true,
+      // transformOptions: {
+      //   enableImplicitConversion: true,
+      // }
+
+      // estas dos maneras permiten transformar el tipo de dato en un dto
     })
-    );
-  await app.listen(3000);
+  );
+  await app.listen(process.env.PORT);
 }
 bootstrap();
